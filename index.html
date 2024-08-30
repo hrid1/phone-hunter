@@ -30,37 +30,75 @@
 
       <div class="space-y-6 text-center my-6">
         <h1 class="text-6xl font-bold">Apple Iphone 12 Pro Max</h1>
-        <p class="md:w-2/3 mx-auto text-lg">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humou.</p>
+        <p class="md:w-2/3 mx-auto text-lg">
+          There are many variations of passages of Lorem Ipsum available, but
+          the majority have suffered alteration in some form, by injected humou.
+        </p>
 
         <button class="btn btn-primary">Bye Now</button>
       </div>
 
-     <div class="mx-auto">
-        <img class="mx-auto" src="./images/Group 48095420.png" alt="">
-     </div>
+      <div class="mx-auto">
+        <img class="mx-auto" src="./images/Group 48095420.png" alt="" />
+      </div>
 
-     <div class="mx-auto my-4 space-y-6 text-center">
+      <div class="mx-auto my-4 space-y-6 text-center">
         <h3 class="text-3xl">Search your phone</h3>
-        <div class="flex items-center justify-center mx-auto ">
-            <input id="input-phone" placeholder="Enter phone name" class="w-3/5 py-4 px-2 rounded-lg" type="text">
-        <button onclick="searchPhone()" class="btn btn-primary text-white">Search</button>
-     </div>
+        <div class="flex items-center justify-center mx-auto">
+          <input
+            id="input-phone"
+            placeholder="Enter phone name"
+            class="w-3/5 py-4 px-2 rounded-lg"
+            type="text"
+          />
+          <button onclick="searchPhone()" class="btn btn-primary text-white">
+            Search
+          </button>
         </div>
+      </div>
     </header>
 
-
     <!-- main section -->
-     <main class="container mx-auto my-6">
-
-       <section id="phone-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
+    <main class="container mx-auto my-6">
+      <section
+        id="phone-container"
+        class="grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
         <!-- start -->
-       
-       </section>
+      </section>
 
-     </main>
+      <!-- show all btn -->
+      <div
+        onclick="showAllBtn()"
+        id="showAll-btn-div"
+        class="mx-auto text-center hidden my-6"
+      >
+        <button class="btn text-white btn-primary">Show All</button>
+      </div>
 
+      <!-- loading spiner -->
 
-     <script src="./script.js"></script>
+      <div id="spiner-div" class="my-20 text-center hidden">
+        <span class="loading loading-infinity loading-lg"></span>
+      </div>
+
+      <!-- Open the modal using ID.showModal() method -->
+      <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
+        <div id="modal-info" class="modal-box text-">
+          <div>
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </dialog>
+    </main>
+
+    <script src="./script.js"></script>
   </body>
 </html>
