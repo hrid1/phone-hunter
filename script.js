@@ -1,26 +1,29 @@
-const loadPhones = async (phone = "iphone") => {
+const loadPhones = async (phone, isShowAll) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${phone}`
   );
   const phones = await res.json();
-  displayPhones(phones.data);
+  displayPhones(phones.data, isShowAll);
 };
 
-const displayPhones = (phones) => {
+const displayPhones = (phones, isShowAll) => {
   const phoneContainer = document.getElementById("phone-container");
   phoneContainer.innerHTML = "";
 
   // showAll btn hide and show
   const showallBtn = document.getElementById("showAll-btn-div");
 
-  if (phones.length > 6) {
+  // console.log(isShowAll);
+
+  if (phones.length > 6 && !isShowAll) {
     showallBtn.classList.remove("hidden");
   } else {
     showallBtn.classList.add("hidden");
   }
 
-  console.log(phones.length);
-  phones = phones.slice(0, 6);
+  if (!isShowAll) {
+    phones = phones.slice(0, 6);
+  }
 
   for (const phone of phones) {
     //    console.log(phone.phone_name);
@@ -50,17 +53,17 @@ const displayPhones = (phones) => {
   lodingSpiner(false); //for hiding spiner
 };
 
-console.log("Hi bro");
-
 // loadPhones()
 
-const searchPhone = () => {
+const searchPhone = (isShowAll) => {
   lodingSpiner(true); // for showing spiner
 
   const searchBox = document.getElementById("input-phone");
   const phoneName = searchBox.value;
-  // console.log(phoneName);
-  loadPhones(phoneName);
+
+  let searchName;
+  phoneName ? (searchName = phoneName) : (searchName = "iphone");
+  loadPhones(searchName, isShowAll);
 };
 
 // loading spiner
@@ -104,7 +107,7 @@ const showPhoneDetails = (phone) => {
                 class="rounded-xl mx-auto" />
             <div class="mx-2 my-4 text-gray-200">
               <h3 class="text-xl font-bold">${name}</h3>
-              <p class="my-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+              <p class="mb-2">It is a long established fact that a reader will be distracted.</p>
           
            
             <p><span class="font-semibold">Display Size: </span> ${
@@ -144,4 +147,11 @@ const showPhoneDetails = (phone) => {
   modalContainer.appendChild(modal);
 };
 
-loadPhones();
+const handleShowAll = () => {
+  console.log("HI");
+  searchPhone(true);
+};
+
+
+// run here
+searchPhone();
